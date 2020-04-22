@@ -1,0 +1,20 @@
+App
+├── Navigation
+└─┬ Routes
+  ├── Home
+  ├─┬ Register
+  │ └── Alert
+  ├─┬ Login
+  │ └── Alert
+  ├─┬ Companies
+  │ ├── CompanyCard
+  │ └── SearchBar
+  ├─┬ Company
+  │ └── JobCard
+  ├─┬ Jobs
+  │ ├── JobCard
+  │ └── SearchBar
+  ├── PrivateRoute
+  └─┬ Profile
+    └── Alert
+
