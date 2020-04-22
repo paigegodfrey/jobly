@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="pt-5"
+  >
+    <div
+      class="Home d-flex"
+      style="height: 50vh;"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="col-md-7"
+          >
+            <div>
+              <img
+                alt="Jobly"
+                class="img-fluid"
+                src="you-x-ventures-X8H8vPcelPk-unsplash.jpg"
+              />
+            </div>
+          </div>
+          <div
+            class="col-md-5 ml-auto d-flex align-items-center mt-4 mt-md-0"
+          >
+            <div>
+              <h1>
+                Jobly
+              </h1>
+              <p
+                class="lead"
+              >
+                All the jobs in one, convenient place.
+              </p>
+              <h2>
+                Welcome back, test_first!
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link } from "react-router-dom";
+import { Link, BrowserRouter } from "react-router-dom";
 import UserContext from "./UserContext";
 import JoblyApi from "./JoblyApi";
 import Alert from "./Alert";
@@ -58,75 +58,77 @@ const Profile = () => {
   };
 
   return (
-    <div className="Profile">
-      <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-        <div className="card">
-          <div className="card-body">
-            <h3 className="card-title text-center mb-4">Profile</h3>
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label>First Name</label>
-                <input
-                  name="first_name"
-                  className="form-control"
-                  value={userForm.first_name}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label>Last Name</label>
-                <input
-                  name="last_name"
-                  className="form-control"
-                  value={userForm.last_name}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label>Email</label>
-                <input
-                  name="email"
-                  className="form-control"
-                  value={userForm.email}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label>Photo URL</label>
-                <input
-                  name="photo_url"
-                  className="form-control"
-                  value={userForm.photo_url}
-                  onChange={handleChange}
-                />
-              </div>
-              {userForm.errors.length ? (
-                <Alert type="danger" messages={userForm.errors} />
-              ) : null}
-              {userForm.saveConfirmed ? (
-                <Alert type="success" messages={["User updated successfully."]} />
-              ) : null}
-              <div className="form-group">
-                <label>Confirm password to make changes:</label>
-                <input
-                  type="password"
-                  name="password"
-                  className="form-control"
-                  value={userForm.password}
-                  onChange={handleChange}
-                />
-              </div>
-              <Link className="btn btn-outline-primary float-left" to="/jobs">
-                Cancel
+    <BrowserRouter>
+      <div className="Profile">
+        <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+          <div className="card">
+            <div className="card-body">
+              <h3 className="card-title text-center mb-4">Profile</h3>
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label>First Name</label>
+                  <input
+                    name="first_name"
+                    className="form-control"
+                    value={userForm.first_name}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Last Name</label>
+                  <input
+                    name="last_name"
+                    className="form-control"
+                    value={userForm.last_name}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Email</label>
+                  <input
+                    name="email"
+                    className="form-control"
+                    value={userForm.email}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Photo URL</label>
+                  <input
+                    name="photo_url"
+                    className="form-control"
+                    value={userForm.photo_url}
+                    onChange={handleChange}
+                  />
+                </div>
+                {userForm.errors.length ? (
+                  <Alert type="danger" messages={userForm.errors} />
+                ) : null}
+                {userForm.saveConfirmed ? (
+                  <Alert type="success" messages={["User updated successfully."]} />
+                ) : null}
+                <div className="form-group">
+                  <label>Confirm password to make changes:</label>
+                  <input
+                    type="password"
+                    name="password"
+                    className="form-control"
+                    value={userForm.password}
+                    onChange={handleChange}
+                  />
+                </div>
+                <Link className="btn btn-outline-primary float-left" to="/jobs">
+                  Cancel
               </Link>
-              <button className="btn btn-primary float-right" >
-                Save Changes
+                <button className="btn btn-primary float-right" >
+                  Save Changes
               </button>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot with no jobs 1`] = `
+<DocumentFragment>
+  <div
+    class="fade-loader-container d-flex align-items-center justify-content-center"
+    style="height: 50vh;"
+  >
+    <div
+      class="css-9ebb9a"
+    >
+      <div
+        class="css-h66g82"
+      />
+      <div
+        class="css-14thll9"
+      />
+      <div
+        class="css-1qem2h2"
+      />
+      <div
+        class="css-bdp1kt"
+      />
+      <div
+        class="css-s1i04x"
+      />
+      <div
+        class="css-7vw0p7"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
