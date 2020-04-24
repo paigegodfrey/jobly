@@ -4,6 +4,8 @@ Jobly is a mock app in which users can view companies/job postings and apply to 
 
 Live demo: https://jobly-react-app.herokuapp.com/
 
+Create a new account or login using the following information:
+
 * Username: test
 * Password: password
 
