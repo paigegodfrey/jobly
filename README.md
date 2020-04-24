@@ -4,8 +4,8 @@ Jobly is a mock app in which users can view companies/job postings and apply to 
 
 Live demo: https://jobly-react-app.herokuapp.com/
 
-Username: test
-Password: password
+* Username: test
+* Password: password
 
 ## Getting Started
 To clone the repository run the following command:
@@ -20,8 +20,3 @@ In the project directory please run:
 npm install
 npm start
 ```
-
-Runs the app in the development mode.
-
-Open [http://localhost:3000] to view it in the browser.
-
