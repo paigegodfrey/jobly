@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { Link, BrowserRouter } from "react-router-dom";
 import UserContext from "./UserContext";
 import JoblyApi from "./JoblyApi";
 import Alert from "./Alert";
@@ -116,10 +115,7 @@ const Profile = () => {
                   onChange={handleChange}
                 />
               </div>
-              <Link className="btn btn-outline-primary float-left" to="/jobs">
-                Cancel
-              </Link>
-              <button className="btn btn-primary float-right" >
+              <button onSubmit={handleSubmit} className="btn btn-primary float-right">
                 Save Changes
               </button>
             </form>
