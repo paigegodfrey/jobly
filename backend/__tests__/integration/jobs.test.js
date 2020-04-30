@@ -6,8 +6,8 @@ const app = require("../../app");
 
 const {
   TEST_DATA,
-  afterEachHook,
   beforeEachHook,
+  afterEachHook,
   afterAllHook
 } = require("./config");
 
@@ -16,7 +16,7 @@ beforeEach(async () => {
 });
 
 
-describe("POST /jobs", async function () {
+describe("POST /jobs", function () {
   test("Creates a new job", async function () {
     const response = await request(app)
         .post(`/jobs`)
@@ -45,9 +45,13 @@ describe("POST /jobs", async function () {
 });
 
 
-describe("GET /jobs", async function () {
+describe("GET /jobs", function () {
   test("Gets a list of 1 job", async function () {
-    const response = await request(app).get(`/jobs`);
+    const response = await request(app)
+      .get(`/jobs`)
+      .send({
+        _token: TEST_DATA.userToken
+      });
     const jobs = response.body.jobs;
     expect(jobs).toHaveLength(1);
     expect(jobs[0]).toHaveProperty("company_handle");
@@ -84,7 +88,7 @@ describe("GET /jobs", async function () {
 });
 
 
-describe("GET /jobs/:id", async function () {
+describe("GET /jobs/:id", function () {
   test("Gets a single a job", async function () {
     const response = await request(app).get(`/jobs/${TEST_DATA.jobId}`).send({_token: TEST_DATA.userToken});
     expect(response.body.job).toHaveProperty("id");
@@ -100,7 +104,7 @@ describe("GET /jobs/:id", async function () {
 });
 
 
-describe("PATCH /jobs/:id", async function () {
+describe("PATCH /jobs/:id", function () {
   test("Updates a single a job's title", async function () {
     const response = await request(app)
         .patch(`/jobs/${TEST_DATA.jobId}`)
@@ -145,7 +149,7 @@ describe("PATCH /jobs/:id", async function () {
 });
 
 
-describe("DELETE /jobs/:id", async function () {
+describe("DELETE /jobs/:id", function () {
   test("Deletes a single a job", async function () {
     const response = await request(app)
         .delete(`/jobs/${TEST_DATA.jobId}`).send({_token: TEST_DATA.userToken})
