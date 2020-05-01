@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import UserContext from "./UserContext";
 import JoblyApi from "./JoblyApi";
 import Alert from "./Alert";
 
 const Profile = () => {
-
+  const history = useHistory();
   const { currentUser, setCurrentUser } = useContext(UserContext);
 
   const [userForm, setUserForm] = useState({
@@ -55,6 +56,10 @@ const Profile = () => {
       errors: []
     }));
   };
+
+  const cancel = () => {
+    history.goBack();
+  }
 
   return (
     <div className="Profile">
@@ -114,6 +119,9 @@ const Profile = () => {
                   value={userForm.password}
                   onChange={handleChange}
                 />
+              </div>
+              <div onClick={cancel} className="btn btn-outline-primary float-left">
+                Cancel
               </div>
               <button onSubmit={handleSubmit} className="btn btn-primary float-right">
                 Save Changes
