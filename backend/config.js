@@ -1,6 +1,6 @@
 /** Shared config for application; can be req'd many places. */
 
-
+// loads environment variables from .env file
 require("dotenv").config();
 
 const SECRET = process.env.SECRET_KEY || 'test';

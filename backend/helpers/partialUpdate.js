@@ -13,12 +13,12 @@
 
 function sqlForPartialUpdate(table, items, key, id) {
   // keep track of item indexes
-  // store all the columns we want to update and associate with vals
+  // store all the columns we want to update and associate with values
 
   let idx = 1;
   let columns = [];
 
-  // filter out keys that start with "_" -- we don't want these in DB
+  // filter out keys that start with "_" (=> "_token") -- we don't want these in DB
   for (let key in items) {
     if (key.startsWith("_")) {
       delete items[key]
