@@ -28,7 +28,7 @@ npm install
 nodemon
 ```
 
-Run the frontend:
+Start the frontend:
 
 ```
 cd frontend/
