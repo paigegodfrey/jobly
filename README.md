@@ -11,7 +11,7 @@ Create a new account or login using the following information:
 * Username: test
 * Password: password
 
-## Getting Started
+## Get Started
 Clone the repository and set up the database:
 
 ```
