@@ -6,10 +6,15 @@ const app = require("../../app");
 
 const {
   TEST_DATA,
+  beforeAllHook,
   beforeEachHook,
   afterEachHook,
   afterAllHook
 } = require("./config");
+
+beforeAll(async function () {
+  await beforeAllHook();
+});
 
 beforeEach(async () => {
   await beforeEachHook(TEST_DATA);
