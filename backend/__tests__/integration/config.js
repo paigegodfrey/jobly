@@ -8,55 +8,55 @@ const app = require("../../app");
 const db = require("../../db");
 
 // Database DDL (for tests)
-// const DB_TABLES = {
-//   companies: `
-//   CREATE TABLE companies(
-//     handle TEXT PRIMARY KEY,
-//     name TEXT UNIQUE NOT NULL,
-//     num_employees INTEGER,
-//     description TEXT,
-//     logo_url TEXT
-//   )`,
-//   users: `
-//   CREATE TABLE users(
-//     username TEXT PRIMARY KEY,
-//     password TEXT NOT NULL,
-//     first_name TEXT,
-//     last_name TEXT,
-//     email TEXT,
-//     photo_url TEXT,
-//     is_admin BOOLEAN default FALSE
-//   )`,
-//   jobs: `
-//   CREATE TABLE jobs(
-//     id SERIAL PRIMARY KEY,
-//     title TEXT,
-//     salary FLOAT,
-//     equity FLOAT CHECK(equity <= 1.0),
-//     company_handle TEXT NOT NULL REFERENCES companies(handle) ON DELETE CASCADE
-//   )`,
-//   applications: `
-//   CREATE TABLE applications(
-//     username TEXT NOT NULL REFERENCES users(username) ON DELETE CASCADE,
-//     job_id INTEGER  REFERENCES jobs(id) ON DELETE CASCADE,
-//     state TEXT,
-//     created_at TIMESTAMP DEFAULT NOW(),
-//     PRIMARY KEY(username, job_id)
-//   )`
-// };
+const DB_TABLES = {
+  companies: `
+  CREATE TABLE companies(
+    handle TEXT PRIMARY KEY,
+    name TEXT UNIQUE NOT NULL,
+    num_employees INTEGER,
+    description TEXT,
+    logo_url TEXT
+  )`,
+  users: `
+  CREATE TABLE users(
+    username TEXT PRIMARY KEY,
+    password TEXT NOT NULL,
+    first_name TEXT,
+    last_name TEXT,
+    email TEXT,
+    photo_url TEXT,
+    is_admin BOOLEAN default FALSE
+  )`,
+  jobs: `
+  CREATE TABLE jobs(
+    id SERIAL PRIMARY KEY,
+    title TEXT,
+    salary FLOAT,
+    equity FLOAT CHECK(equity <= 1.0),
+    company_handle TEXT NOT NULL REFERENCES companies(handle) ON DELETE CASCADE
+  )`,
+  applications: `
+  CREATE TABLE applications(
+    username TEXT NOT NULL REFERENCES users(username) ON DELETE CASCADE,
+    job_id INTEGER  REFERENCES jobs(id) ON DELETE CASCADE,
+    state TEXT,
+    created_at TIMESTAMP DEFAULT NOW(),
+    PRIMARY KEY(username, job_id)
+  )`
+};
 
 // global auth variable to store things for all the tests
 const TEST_DATA = {};
 
 async function beforeAllHook() {
-  // try {
-  //   await db.query(DB_TABLES["companies"]);
-  //   await db.query(DB_TABLES["users"]);
-  //   await db.query(DB_TABLES["jobs"]);
-  //   await db.query(DB_TABLES["applications"]);
-  // } catch (error) {
-  //   console.error(error);
-  // }
+  try {
+    await db.query(DB_TABLES["companies"]);
+    await db.query(DB_TABLES["users"]);
+    await db.query(DB_TABLES["jobs"]);
+    await db.query(DB_TABLES["applications"]);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 /**
@@ -122,10 +122,10 @@ async function afterEachHook() {
 
 async function afterAllHook() {
   try {
-    // await db.query("DROP TABLE IF EXISTS applications");
-    // await db.query("DROP TABLE IF EXISTS jobs");
-    // await db.query("DROP TABLE IF EXISTS users");
-    // await db.query("DROP TABLE IF EXISTS companies");
+    await db.query("DROP TABLE IF EXISTS applications");
+    await db.query("DROP TABLE IF EXISTS jobs");
+    await db.query("DROP TABLE IF EXISTS users");
+    await db.query("DROP TABLE IF EXISTS companies");
     await db.end();
   } catch (err) {
     console.error(err);
