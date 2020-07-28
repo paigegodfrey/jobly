@@ -16,11 +16,22 @@ To clone the repository run the following command:
 
 ```
 git clone https://github.com/paigegodfrey/jobly.git
+createdb jobly
+psql jobly < data.sql
 ```
 
-In the project directory please run:
+Start the backend server:
 
 ```
+cd "backend"
+npm install
+npm start
+```
+
+Run the frontend:
+
+```
+cd "frontend"
 npm install
 npm start
 ```
