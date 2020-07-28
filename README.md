@@ -12,7 +12,7 @@ Create a new account or login using the following information:
 * Password: password
 
 ## Getting Started
-To clone the repository run the following command:
+Clone the repository and set up the database:
 
 ```
 git clone https://github.com/paigegodfrey/jobly.git
