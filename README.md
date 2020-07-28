@@ -1,6 +1,8 @@
 # Jobly
 
-Jobly is a mock app in which users can view companies/job postings and apply to open positions. The app features a user login interface using JSON web token authentication. The frontend is built with React and styled with Bootstrap, and the backend runs on Node/Express and uses a PostgreSQL database.
+Jobly is a full-stack mock job-search application in which users can login, view companies/jobs, and apply to open positions. Global state is managed with React Context and the backend features a RESTful API with token-based authentication. Integration tests are written with Jest and SuperTest.
+
+Utilizes: React, React Context, Node, Express, JSON Web Tokens, Bcrypt, Jest, SuperTest, PostgreSQL.
 
 Live demo: https://jobly-react-app.herokuapp.com/
 
