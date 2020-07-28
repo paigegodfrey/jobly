@@ -23,15 +23,15 @@ psql jobly < data.sql
 Start the backend server:
 
 ```
-cd "backend"
+cd backend/
 npm install
-npm start
+nodemon
 ```
 
 Run the frontend:
 
 ```
-cd "frontend"
+cd frontend/
 npm install
 npm start
 ```
