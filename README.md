@@ -35,3 +35,5 @@ cd frontend/
 npm install
 npm start
 ```
+
+This was pair programming project, with collaborator: https://github.com/sairina
