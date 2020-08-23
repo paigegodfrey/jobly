@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "name": "jobly-backend",
-=======
   "name": "jobly",
->>>>>>> c1f38db0dc77a3b8c098df01a5f71ddaa14c4bf9
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
