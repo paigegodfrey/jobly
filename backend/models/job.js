@@ -10,8 +10,8 @@ class Job {
 
   static async findAll(data, username) {
     let baseQuery = `
-      SELECT id, title, company_handle, salary, equity, a.state 
-      FROM jobs 
+      SELECT id, title, company_handle, c.name, salary, equity, a.state 
+      FROM jobs
         LEFT OUTER JOIN applications AS a ON a.job_id = id AND a.username = $1
         LEFT OUTER JOIN companies AS c ON c.handle = company_handle`;
     let whereExpressions = [];
