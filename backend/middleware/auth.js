@@ -48,7 +48,7 @@ function adminRequired(req, res, next) {
       return next();
     }
 
-    // throw an error, so we catch it in our catch, below
+    // (else) throw an error, so we catch it in our catch, below
     throw new Error();
   }
 
@@ -81,7 +81,7 @@ function ensureCorrectUser(req, res, next) {
       return next();
     }
 
-    // throw an error, so we catch it in our catch, below
+    // (else) throw an error, so we catch it in our catch, below
     throw new Error();
   }
 

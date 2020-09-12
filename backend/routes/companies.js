@@ -11,7 +11,7 @@ const {validate} = require("jsonschema");
 const {companyNewSchema, companyUpdateSchema} = require("../schemas");
 
 
-/** GET /  =>  {companies: [company, company]}  */
+/** GET /  =>  {companies: [companyData, ...]}  */
 
 router.get("/", authRequired, async function (req, res, next) {
   try {
@@ -66,7 +66,7 @@ router.post("/", adminRequired, async function (req, res, next) {
 router.patch("/:handle", adminRequired, async function (req, res, next) {
   try {
     if ("handle" in req.body) {
-      return next({status: 400, message: "Not allowed"});
+      return next({status: 400, message: "Changing the company handle is not permitted."});
     }
 
     const validation = validate(req.body, companyUpdateSchema);
