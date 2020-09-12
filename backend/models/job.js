@@ -12,7 +12,8 @@ class Job {
     let baseQuery = `
       SELECT id, title, company_handle, salary, equity, a.state 
       FROM jobs 
-        LEFT OUTER JOIN applications AS a on a.job_id = id AND a.username = $1`;
+        LEFT OUTER JOIN applications AS a ON a.job_id = id AND a.username = $1
+        LEFT OUTER JOIN companies AS c ON c.handle = company_handle`;
     let whereExpressions = [];
     let queryValues = [username];
 
@@ -42,6 +43,7 @@ class Job {
 
     let finalQuery = baseQuery + whereExpressions.join(" AND ");
     const jobsRes = await db.query(finalQuery, queryValues);
+
     return jobsRes.rows;
   }
 
