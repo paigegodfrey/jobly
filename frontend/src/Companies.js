@@ -29,7 +29,7 @@ const Companies = () => {
       <SearchBar searchFor={searchCompanies} />
       {companies.length ? (
         <div className="JobList">
-          {companies.map((companyData, idx) => (
+          {companies.map(companyData => (
             <CompanyCard
               company={companyData}
               key={companyData.handle}
