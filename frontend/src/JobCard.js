@@ -12,6 +12,8 @@ const JobCard = ({ job = {}, handleApply }) => {
   let formattedSalary = formatCurrency.format(salary).slice(0, -3);
   let formattedEquity = Math.round(equity * 100, 0) + '%';
 
+  // TO DO - add company data to JobCard
+
   return (
     <div className="col">
       <div className="JobCard Card card">
