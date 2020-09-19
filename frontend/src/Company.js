@@ -37,6 +37,8 @@ const Company = () => {
     if (company && Array.isArray(company.jobs) && idx < company.jobs.length) {
       let jobId = company.jobs[idx].id;
       let message = await JoblyApi.applyToJob(jobId);
+      
+      // update state to re-render text from 'Apply' to 'Applied'
       setCompany(c => {
         let newCompany = { ...c };
         newCompany.jobs = newCompany.jobs.map(job =>
