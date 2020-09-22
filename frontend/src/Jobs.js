@@ -6,10 +6,12 @@ import { PropagateLoader } from "react-spinners";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
+  const [jobsLoaded, setJobsLoaded] = useState(false);
   
   const searchJobs = async (search) => {
     let jobsResponse = await JoblyApi.getJobs(search);
     setJobs(jobsResponse);
+    setJobsLoaded(true);
   }
 
   useEffect(() => {
@@ -24,7 +26,7 @@ const Jobs = () => {
     ));
   }
 
-  if (!jobs.length) {
+  if (!jobsLoaded) {
     return (
       <div className="fade-loader-container d-flex align-items-center justify-content-center" style={{height: '50vh'}}>
         <PropagateLoader size='15px' color="#123abc"/>
