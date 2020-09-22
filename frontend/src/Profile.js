@@ -34,8 +34,6 @@ const Profile = () => {
       let username = currentUser.username;
       let updatedUser = await JoblyApi.saveProfile(username, profileData);
 
-      console.log("UPDATED USER", updatedUser);
-
       setUserForm(fData => ({
         ...fData,
         errors: [],
