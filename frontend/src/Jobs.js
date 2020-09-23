@@ -21,6 +21,8 @@ const Jobs = () => {
   const apply = async idx => {
     let jobId = jobs[idx].id;
     let message = await JoblyApi.applyToJob(jobId);
+
+    // update state to re-render text from 'Apply' to 'Applied'
     setJobs(j => j.map(job => 
       job.id === jobId ? { ...job, state: message} : job
     ));
