@@ -6,7 +6,7 @@ import headerImg from "./you-x-ventures-X8H8vPcelPk-unsplash.jpg";
 const Home = () => {
   const { currentUser } = useContext(UserContext);
   return (
-    <div className="Home d-flex" style={{ height: '50vh' }}>
+    <div className="Home d-flex align-items-center" style={{ height: '50vh' }}>
       <div className="container">
         <div className="row">
           <div className="col-md-7">
@@ -14,7 +14,7 @@ const Home = () => {
               <img src={headerImg} className="img-fluid" alt="Jobly" />
             </div>
           </div>
-          <div className="col-md-5 ml-auto d-flex align-items-center mt-4 mt-md-0">
+          <div className="col-md-5 ml-auto mt-4 mt-md-0">
             <div>
               <h1>Jobly</h1>
               <p className="lead">All the jobs in one, convenient place.</p>
