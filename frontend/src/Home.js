@@ -21,13 +21,13 @@ const Home = () => {
               <p className="lead">All the jobs in one, convenient place.</p>
               {!currentUser ? (
                 <div>
-                  <Link className="btn btn-primary font-weight-bold" to="/register">
+                  <Link className="btn btn-secondary font-weight-bold" to="/register">
                     Get Started
                   </Link>
                 </div>
               ) : (
                   <div>
-                    <Link className="btn btn-outline-primary font-weight-bold" to="/jobs">
+                    <Link className="btn btn-outline-secondary font-weight-bold" to="/jobs">
                       View Jobs
                   </Link>
                   </div>
