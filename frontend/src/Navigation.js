@@ -23,7 +23,7 @@ const Navigation = ({ logout }) => {
           <Nav.Item className="mr-4">
             <NavLink exact to="/profile">Profile</NavLink>
           </Nav.Item>
-          <Nav.Item className="mr-2">
+          <Nav.Item className="mr-3">
             <NavLink to="/" onClick={logout}>Logout</NavLink>
           </Nav.Item>
         </Nav>
@@ -35,7 +35,7 @@ const Navigation = ({ logout }) => {
     <Navbar expand="md" className="Navigation">
       <Navbar.Brand href="/" className="nav-brand">Jobly</Navbar.Brand>
       <Nav className="ml-auto">
-        <Nav.Item className="mr-2">
+        <Nav.Item className="mr-3">
           <NavLink exact to="/login">Login</NavLink>
         </Nav.Item>
       </Nav>
