@@ -64,7 +64,7 @@ const Profile = () => {
       <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
         <div className="card">
           <div className="card-body">
-            <h3 className="card-title text-center mb-4">Profile</h3>
+            <h2 className="card-title text-center mb-4">Profile</h2>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label>First Name</label>

@@ -8,7 +8,7 @@ const CompanyCard = ({ company = {} }) => {
   return (
     <Link className="CompanyCard Card card" to={`/companies/${handle}`}>
       <div className="card-body">
-        <h6 className="card-title d-flex justify-content-between">
+        <h6 className="card-title font-weight-bold d-flex justify-content-between">
           <span className="text-capitalize">{name}</span>
           <img src={logo_url || defaultLogo} alt={`${name} Logo`} />
         </h6>

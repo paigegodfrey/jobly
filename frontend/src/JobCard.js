@@ -16,7 +16,7 @@ const JobCard = ({ job = {}, handleApply }) => {
     <div className="col">
       <div className="JobCard Card card">
         <div className="card-body">
-          <h6 className="card-title d-flex justify-content-between">
+          <h6 className="card-title font-weight-bold d-flex justify-content-between">
             <span className="text-capitalize">{title}</span>
           </h6>
           {name && <div>Company: {name}</div>}
