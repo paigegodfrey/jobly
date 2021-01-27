@@ -1,8 +1,12 @@
 #hero {
   height: 50vh;
+  margin-top: 100px;
 }
 
 @media (max-width: 991px) {
+  #hero {
+    margin-top: 0;
+  }
   #hero h1 {
     font-size: 32px;
   }
