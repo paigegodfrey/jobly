@@ -9,12 +9,12 @@
 }
 
 nav a {
-  color: black;
+  color: rgb(105, 105, 105);
   font-size: 18px;
-  font-weight: 450;
+  font-weight: 500;
 }
 
 nav a:hover {
-  color: #007bff;
+  color: black;
   text-decoration: none;
 }
