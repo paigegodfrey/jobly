@@ -1,0 +1,15 @@
+#hero {
+  height: 50vh;
+}
+
+@media (max-width: 991px) {
+  #hero h1 {
+    font-size: 32px;
+  }
+  #hero .lead {
+    font-size: 18px;
+  }
+  #hero h2 {
+    font-size: 30px;
+  }
+}

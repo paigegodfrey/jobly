@@ -33,7 +33,7 @@ const Navigation = ({ logout }) => {
 
   const loggedOutNav = (
     <ul className="navbar-nav ml-auto">
-      <li className="nav-item mr-4">
+      <li className="nav-item">
         <NavLink className="nav-link" to="/login">
           Login
         </NavLink>

@@ -1,37 +1,41 @@
 import React, { useContext } from "react";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { Link } from "react-router-dom";
 import UserContext from "./UserContext";
 import headerImg from "./you-x-ventures-X8H8vPcelPk-unsplash.jpg";
+import './Home.css';
 
 const Home = () => {
   const { currentUser } = useContext(UserContext);
   return (
-    <div className="Home d-flex align-items-center" style={{ height: '50vh' }}>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-7">
+    <div id="hero" className="Home d-flex">
+      <Container className="hero-container">
+        <Row>
+          <Col lg={7}>
             <div>
-              <img src={headerImg} className="img-fluid" alt="Jobly" />
+              <img className="img-fluid" src={headerImg} alt="jobly" />
             </div>
-          </div>
-          <div className="col-md-5 ml-auto mt-4 mt-md-0">
+          </Col>
+          <Col lg={5} className="title-text-col d-flex align-items-center mt-4 mt-lg-0 ml-auto">
             <div>
               <h1>Jobly</h1>
               <p className="lead">All the jobs in one, convenient place.</p>
               {currentUser ? (
                 <h2>Welcome back{currentUser.first_name ? `, ${currentUser.first_name}!` : '!'}</h2>
               ) : (
-                <div>
-                  <Link className="btn btn-primary font-weight-bold" to="/register">
-                    Get Started
+                  <div>
+                    <Link className="btn btn-primary font-weight-bold" to="/register">
+                      Get Started
                   </Link>
-                </div>
-              )}
+                  </div>
+                )}
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          </Col>
+        </Row>
+      </Container>
+    </div >
   );
 }
 
