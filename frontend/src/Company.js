@@ -37,7 +37,7 @@ const Company = () => {
     if (company && Array.isArray(company.jobs) && idx < company.jobs.length) {
       let jobId = company.jobs[idx].id;
       let message = await JoblyApi.applyToJob(jobId);
-      
+
       // update state to re-render text from 'Apply' to 'Applied'
       setCompany(c => {
         let newCompany = { ...c };
@@ -59,12 +59,10 @@ const Company = () => {
 
   return (
     <div className="col-sm-8 offset-sm-2">
-      <div className="container">
-        <h3 className="text-capitalize">{company.name}</h3>
-        <p>{company.description}</p>
-      </div>
+      <h2 className="text-capitalize">{company.name}</h2>
+      <p className="lead">{company.description}</p>
       {company.jobs.length ? (
-        <div className="JobList row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
+        <div className="JobList mt-4 row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
           {company.jobs.map((jobData, idx) => (
             <JobCard
               job={jobData}

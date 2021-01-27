@@ -38,6 +38,8 @@ const Jobs = () => {
 
   return (
     <div className="Jobs col-md-8 offset-md-2">
+          <h1>These jobs are available!</h1>
+          <p className="lead">Apply to any position with a single click.</p>
       <SearchBar searchFor={searchJobs} />
       {jobs.length ? (
         <div className="JobList row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3">

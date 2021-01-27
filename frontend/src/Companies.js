@@ -28,6 +28,8 @@ const Companies = () => {
 
   return (
     <div className="Companies col-md-8 offset-md-2">
+      <h1>These companies are hiring!</h1>
+      <p className="lead">Click on a company to view available jobs.</p>
       <SearchBar searchFor={searchCompanies} />
       {companies.length ? (
         <div className="JobList">
