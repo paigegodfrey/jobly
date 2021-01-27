@@ -1,18 +1,20 @@
 .Navigation {
   background-color: white;
   border-bottom: 2px solid rgba(0, 0, 0, 0.125);
-  z-index: -1;
 }
 
-.nav-link, .navbar-brand {
-  color: black;
-}
-
-.navbar-brand {
+.nav-brand {
+  font-size: 30px;
   font-weight: 600;
 }
 
-.nav-link-main.active {
-  font-weight: bold;
+nav a {
+  color: black;
+  font-size: 18px;
+  font-weight: 450;
+}
+
+nav a:hover {
   color: #007bff;
+  text-decoration: none;
 }

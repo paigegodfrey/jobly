@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 import './Navigation.css';
 import UserContext from "./UserContext";
 
@@ -7,48 +9,45 @@ const Navigation = ({ logout }) => {
   const { currentUser } = useContext(UserContext);
 
   const loggedInNav = (
-    <ul className="navbar-nav ml-auto">
-      <li className="nav-item mr-4">
-        <NavLink className="nav-link nav-link-main" to="/companies">
-          Companies
-        </NavLink>
-      </li>
-      <li className="nav-item mr-4">
-        <NavLink className="nav-link nav-link-main" to="/jobs">
-          Jobs
-        </NavLink>
-      </li>
-      <li className="nav-item mr-4">
-        <NavLink className="nav-link nav-link-main" to="/profile">
-          Profile
-        </NavLink>
-      </li>
-      <li className="nav-item">
-        <Link className="nav-link nav-link-main" to="/" onClick={logout}>
-          Log out
-        </Link>
-      </li>
-    </ul>
+    <Navbar expand="md" className="Navigation">
+      <Navbar.Brand href="/" className="nav-brand">Jobly</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+        <Nav>
+          <Nav.Item className="mr-4">
+            <NavLink exact to="/companies">Companies</NavLink>
+          </Nav.Item>
+          <Nav.Item className="mr-4">
+            <NavLink exact to="/jobs">Jobs</NavLink>
+          </Nav.Item>
+          <Nav.Item className="mr-4">
+            <NavLink exact to="/profile">Profile</NavLink>
+          </Nav.Item>
+          <Nav.Item className="mr-2">
+            <NavLink to="/" onClick={logout}>Logout</NavLink>
+          </Nav.Item>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 
   const loggedOutNav = (
-    <ul className="navbar-nav ml-auto">
-      <li className="nav-item">
-        <NavLink className="nav-link" to="/login">
-          Login
-        </NavLink>
-      </li>
-    </ul>
+    <Navbar expand="md" className="Navigation">
+      <Navbar.Brand href="/" className="nav-brand">Jobly</Navbar.Brand>
+      <Nav className="ml-auto">
+        <Nav.Item className="mr-2">
+          <NavLink exact to="/login">Login</NavLink>
+        </Nav.Item>
+      </Nav>
+    </Navbar>
   );
 
   return (
-    <nav className="Navigation navbar navbar-expand-md">
-      <Link className="navbar-brand" to="/">
-        Jobly
-      </Link>
-      {currentUser ? loggedInNav : loggedOutNav}
-    </nav>
+    <div>
+      { currentUser ? loggedInNav : loggedOutNav}
+    </div>
   );
 }
 
 export default Navigation;
+

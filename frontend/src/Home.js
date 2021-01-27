@@ -22,12 +22,16 @@ const Home = () => {
             <div>
               <h1>Jobly</h1>
               <p className="lead">All the jobs in one, convenient place.</p>
-              {currentUser ? (
-                <h2>Welcome back{currentUser.first_name ? `, ${currentUser.first_name}!` : '!'}</h2>
+              {!currentUser ? (
+                <div>
+                  <Link className="btn btn-primary font-weight-bold" to="/register">
+                    Get Started
+                  </Link>
+                </div>
               ) : (
                   <div>
-                    <Link className="btn btn-primary font-weight-bold" to="/register">
-                      Get Started
+                    <Link className="btn btn-outline-primary font-weight-bold" to="/jobs">
+                      View Jobs
                   </Link>
                   </div>
                 )}
@@ -35,7 +39,7 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
-    </div >
+    </div>
   );
 }
 
