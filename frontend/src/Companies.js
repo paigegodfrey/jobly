@@ -2,18 +2,19 @@ import React, { useEffect, useState } from 'react';
 import JoblyApi from './JoblyApi';
 import SearchBar from './SearchBar';
 import CompanyCard from './CompanyCard';
-import { PropagateLoader } from "react-spinners";
+import { PropagateLoader } from 'react-spinners';
 
 const Companies = () => {
   const [companies, setCompanies] = useState([]);
   const [companiesLoaded, setCompaniesLoaded] = useState(false);
 
-  const searchCompanies = async (search) => {
+  const searchCompanies = async search => {
     let companies = await JoblyApi.getCompanies(search);
     setCompanies(companies);
     setCompaniesLoaded(true);
   }
 
+  // loads all companies on initial page render since search (term) is undefined
   useEffect(() => {
     searchCompanies();
   }, []);

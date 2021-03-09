@@ -9,6 +9,7 @@ const Company = () => {
   const { handle } = useParams();
   const { currentUser } = useContext(UserContext);
 
+  // company object changes when user applies to jobs
   const [company, setCompany] = useState(null);
 
   useEffect(() => {
@@ -19,8 +20,8 @@ const Company = () => {
       // create a set with IDs of jobs applied to
       const jobsIDsAppliedTo = new Set(jobs.map(job => job.id));
 
-      // add key for each job in company if it is applied to ---
-      // this let us handle the "apply/applied" button
+      // add 'state' key for each job in company if user has applied
+      // used to handle the "apply/applied" button (on initial render)
       companyResponse.jobs = companyResponse.jobs.map(job => ({
         ...job,
         state: jobsIDsAppliedTo.has(job.id) ? "applied" : null
@@ -32,8 +33,7 @@ const Company = () => {
     getCompanyAndJobs();
   }, [handle, currentUser]);
 
-
-  const apply = async (idx) => {
+  const apply = async idx => {
     if (company && Array.isArray(company.jobs) && idx < company.jobs.length) {
       let jobId = company.jobs[idx].id;
       let message = await JoblyApi.applyToJob(jobId);
