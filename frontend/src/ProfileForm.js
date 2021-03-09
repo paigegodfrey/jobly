@@ -14,36 +14,37 @@ const ProfileForm = () => {
     email: currentUser.email || "",
     photo_url: currentUser.photo_url || "",
     password: "",
-    errors: [],
-    saveConfirmed: false
   });
+
+  const [formErrors, setFormErrors] = useState([]);
+  const [saveConfirmed, setSaveConfirmed] = useState(false);
 
   const handleSubmit = async evt => {
     evt.preventDefault();
 
+    // pass in undefined for optional fields
+    let profileData = {
+      first_name: userForm.first_name || undefined,
+      last_name: userForm.last_name || undefined,
+      email: userForm.email || undefined,
+      photo_url: userForm.photo_url || undefined,
+      password: userForm.password
+    };
+
+    let username = currentUser.username;
+    let updatedUser;
+
     try {
-      // pass in undefined for optional fields
-      let profileData = {
-        first_name: userForm.first_name || undefined,
-        last_name: userForm.last_name || undefined,
-        email: userForm.email || undefined,
-        photo_url: userForm.photo_url || undefined,
-        password: userForm.password
-      };
-
-      let username = currentUser.username;
-      let updatedUser = await JoblyApi.saveProfile(username, profileData);
-
-      setUserForm(fData => ({
-        ...fData,
-        errors: [],
-        saveConfirmed: true,
-        password: ""
-      }))
-      setCurrentUser(updatedUser);
+      updatedUser = await JoblyApi.saveProfile(username, profileData);
     } catch (errors) {
-      setUserForm(f => ({ ...f, errors }));
+      setFormErrors(errors);
+      return;
     }
+
+    setUserForm(fData => ({ ...fData, password: "" }));
+    setFormErrors([]);
+    setSaveConfirmed(true);
+    setCurrentUser(updatedUser);
   };
 
   const handleChange = evt => {
@@ -102,12 +103,6 @@ const ProfileForm = () => {
                   onChange={handleChange}
                 />
               </div>
-              {userForm.errors.length ? (
-                <Alert type="danger" messages={userForm.errors} />
-              ) : null}
-              {userForm.saveConfirmed ? (
-                <Alert type="success" messages={["User updated successfully."]} />
-              ) : null}
               <div className="form-group">
                 <label>Confirm password to make changes:</label>
                 <input
@@ -118,6 +113,14 @@ const ProfileForm = () => {
                   onChange={handleChange}
                 />
               </div>
+
+              {formErrors.length ? (
+                <Alert type="danger" messages={userForm.errors} />
+              ) : null}
+              {saveConfirmed ? (
+                <Alert type="success" messages={["User updated successfully."]} />
+              ) : null}
+
               <div onClick={cancel} className="btn btn-outline-primary float-left">
                 Cancel
               </div>
