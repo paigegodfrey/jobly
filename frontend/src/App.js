@@ -44,6 +44,29 @@ const App = () => {
     setToken(null);
   };
 
+
+  // Handles site-wide login
+  const handleLogin = async loginData => {
+    try {
+      let token = await JoblyApi.login(loginData);
+      setToken(token);
+      return { success: true };
+    } catch (errors) {
+      return { success: false, errors };
+    }
+  }
+
+  // Handles site-wide registration
+  const handleRegister = async registerData => {
+    try {
+      let token = await JoblyApi.register(registerData);
+      setToken(token);
+      return { success: true };
+    } catch (errors) {
+      return { success: false, errors };
+    }
+  }
+
   if (!infoLoaded) {
     return (
       <div className="fade-loader-container d-flex align-items-center justify-content-center" style={{ height: '50vh' }}>
@@ -57,7 +80,7 @@ const App = () => {
       <UserContext.Provider value={{ currentUser, setCurrentUser }}>
         <div className="App">
           <Navigation logout={handleLogOut} />
-          <Routes setToken={setToken} />
+          <Routes login={handleLogin} register={handleRegister} />
         </div>
       </UserContext.Provider>
     </BrowserRouter>

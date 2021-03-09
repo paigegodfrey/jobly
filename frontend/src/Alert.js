@@ -1,6 +1,6 @@
 import React from "react";
 
-const Alert = ({ type, messages }) => {
+const Alert = ({ type = "danger", messages = [] }) => {
   return (
     <div className={`alert alert-${type}`} role="alert">
       {messages.map(error => (
@@ -11,10 +11,5 @@ const Alert = ({ type, messages }) => {
     </div>
   );
 }
-
-Alert.defaultProps = {
-  type: "danger",
-  messages: []
-};
 
 export default Alert;

@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import Alert from "./Alert";
-import JoblyApi from "./JoblyApi";
 
-const Register = ({ setToken }) => {
+const Register = ({ register }) => {
   const history = useHistory();
   const [registerData, setRegisterData] = useState(
     {
@@ -13,34 +12,18 @@ const Register = ({ setToken }) => {
       first_name: "",
       last_name: "",
       email: "",
-      errors: []
     });
 
-  /** AUTHENTICATION:
-   *  - get token from backend and save in localStorage
-   */
+  const [formErrors, setFormErrors] = useState([]);
+
   const handleSubmit = async evt => {
     evt.preventDefault();
-
-    // pass in undefined for optional fields
-    let data = {
-      username: registerData.username,
-      password: registerData.password,
-      first_name: registerData.first_name || undefined,
-      last_name: registerData.last_name || undefined,
-      email: registerData.email || undefined
+    let result = await register(registerData);
+    if (result.success) {
+      history.push("/companies");
+    } else {
+      setFormErrors(result.errors);
     }
-
-    let token;
-
-    try {
-      token = await JoblyApi.register(data);
-    } catch (errors) {
-      return setRegisterData(registerData => ({ ...registerData, errors }));
-    }
-
-    setToken(token);
-    history.push("/jobs");
   }
 
   const handleChange = evt => {
@@ -107,8 +90,8 @@ const Register = ({ setToken }) => {
                   />
                 </div>
               </div>
-              {registerData.errors.length ? (
-                <Alert type="danger" messages={registerData.errors} />
+              {formErrors.length ? (
+                <Alert type="danger" messages={formErrors} />
               ) : null}
               <Link className="btn btn-outline-primary float-left" to="/login">
                 Login

@@ -9,7 +9,7 @@ import Company from './Company';
 import Profile from './Profile';
 import PrivateRoute from "./PrivateRoute";
 
-const Routes = ({ setToken }) => {
+const Routes = ({ register, login }) => {
   return (
     <div className="pt-5">
       <Switch>
@@ -17,10 +17,10 @@ const Routes = ({ setToken }) => {
           <Home />
         </Route>
         <Route exact path="/register">
-          <Register setToken={setToken} />
+          <Register register={register} />
         </Route>
         <Route exact path="/login">
-          <Login setToken={setToken} />
+          <Login login={login} />
         </Route>
         <PrivateRoute exact path="/companies">
           <Companies />

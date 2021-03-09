@@ -2,35 +2,25 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import Alert from "./Alert";
-import JoblyApi from "./JoblyApi";
 
-const Login = ({ setToken }) => {
+const Login = ({ login }) => {
   const history = useHistory();
   const [loginData, setLoginData] = useState(
     {
       username: "",
       password: "",
-      errors: []
     });
 
-  /** AUTHENTICATION:
-   *  - generate token from backend and save in localStorage
-   */
+  const [loginErrors, setLoginErrors] = useState([]);
+
   const handleSubmit = async evt => {
     evt.preventDefault();
-    let token;
-
-    try {
-      token = await JoblyApi.login({
-        username: loginData.username,
-        password: loginData.password
-      });
-    } catch (errors) {
-      return setLoginData(loginData => ({ ...loginData, errors }));
+    let result = await login(loginData);
+    if (result.success) {
+      history.push("/companies");
+    } else {
+      setLoginErrors(result.errors);
     }
-
-    setToken(token);
-    history.push("/jobs");
   }
 
   const handleChange = evt => {
@@ -67,13 +57,13 @@ const Login = ({ setToken }) => {
                   onChange={handleChange}
                 />
               </div>
-              {loginData.errors.length ? (
-                <Alert type="danger" messages={loginData.errors} />
+              {loginErrors.length ? (
+                <Alert type="danger" messages={loginErrors} />
               ) : null}
               <Link className="btn btn-outline-primary float-left" to="/register">
                 Create Account
               </Link>
-              <button 
+              <button
                 className="btn btn-primary float-right"
                 onSubmit={handleSubmit}
               >
