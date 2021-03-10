@@ -8,7 +8,7 @@ const Jobs = () => {
   const [jobs, setJobs] = useState([]);
   const [jobsLoaded, setJobsLoaded] = useState(false);
 
-  const searchJobs = async (search) => {
+  const searchJobs = async search => {
     let jobsResponse = await JoblyApi.getJobs(search);
     setJobs(jobsResponse);
     setJobsLoaded(true);

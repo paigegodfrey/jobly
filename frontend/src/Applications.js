@@ -4,6 +4,9 @@ const Applications = () => {
   const [applications, setApplications] = useState([]);
   const [applicationsLoaded, setApplicationsLoaded] = useState(false);
 
+  return (
+    <div>Applications</div>
+  )
   
 }
 

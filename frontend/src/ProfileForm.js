@@ -1,11 +1,9 @@
 import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
 import UserContext from "./UserContext";
 import JoblyApi from "./JoblyApi";
 import Alert from "./Alert";
 
-const ProfileForm = () => {
-  const history = useHistory();
+const ProfileForm = ({ toggleFormButton }) => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
 
   const [userForm, setUserForm] = useState({
@@ -45,6 +43,7 @@ const ProfileForm = () => {
     setFormErrors([]);
     setSaveConfirmed(true);
     setCurrentUser(updatedUser);
+    toggleFormButton();
   };
 
   const handleChange = evt => {
@@ -57,7 +56,7 @@ const ProfileForm = () => {
   };
 
   const cancel = () => {
-    history.goBack();
+    toggleFormButton();
   }
 
   return (
