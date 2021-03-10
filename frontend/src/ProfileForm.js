@@ -15,7 +15,6 @@ const ProfileForm = ({ toggleFormButton }) => {
   });
 
   const [formErrors, setFormErrors] = useState([]);
-  const [saveConfirmed, setSaveConfirmed] = useState(false);
 
   const handleSubmit = async evt => {
     evt.preventDefault();
@@ -41,7 +40,6 @@ const ProfileForm = ({ toggleFormButton }) => {
 
     setUserForm(fData => ({ ...fData, password: "" }));
     setFormErrors([]);
-    setSaveConfirmed(true);
     setCurrentUser(updatedUser);
     toggleFormButton();
   };
@@ -102,7 +100,7 @@ const ProfileForm = ({ toggleFormButton }) => {
             </div>
             <div className="form-group">
               <label>Confirm password to make changes:</label>
-              <input
+              <input required
                 type="password"
                 name="password"
                 className="form-control"
@@ -112,10 +110,7 @@ const ProfileForm = ({ toggleFormButton }) => {
             </div>
 
             {formErrors.length ? (
-              <Alert type="danger" messages={userForm.errors} />
-            ) : null}
-            {saveConfirmed ? (
-              <Alert type="success" messages={["User updated successfully."]} />
+              <Alert type="danger" messages={formErrors} />
             ) : null}
 
             <div onClick={cancel} className="btn btn-outline-primary float-left">
