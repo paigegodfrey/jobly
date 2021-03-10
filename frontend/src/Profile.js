@@ -7,7 +7,7 @@ import defaultPic from "./default-pic.png";
 import './Profile.css';
 
 const Profile = () => {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
   const userJobs = currentUser.jobs;
 
   const [showForm, setShowForm] = useState(false);
@@ -29,20 +29,30 @@ const Profile = () => {
       <div className="d-flex">
         <div className="container">
           <div className="row">
-            <div className="user-details col-lg-4">
-              <div>
-                <img className="profile-pic" src={currentUser.photo_url || defaultPic} alt={`${currentUser.name} profile pic`}></img>
+            <div className="user-details col-lg-5 px-5">
+
+              <div className="text-center">
+                <div className="mb-3">
+                  <img className="profile-pic" src={currentUser.photo_url || defaultPic} alt={`${currentUser.name} profile pic`}></img>
+                </div>
+                <div>
+                  <button className="btn btn-outline-primary" onClick={toggleFormButton}>Edit Details</button>
+                </div>
                 <hr></hr>
               </div>
-              <div className="mb-5">
-                <p><b>Username: </b>{currentUser.username}</p>
-                <p><b>Name: </b>{`${currentUser.first_name} ${currentUser.last_name}`}</p>
-                <p><b>Email: </b>{currentUser.email} </p>
-                <button className="btn btn-outline-primary" onClick={toggleFormButton}>Edit Info</button>
+
+              <div className="card mb-2">
+                <div className="card-body">
+                <p><b>First Name: </b>{currentUser.first_name}</p>
+                <p><b>Last Name: </b>{currentUser.last_name}</p>
+                <p><b>Email: </b>{currentUser.email}</p>
+                <p><b>Photo URL: </b>{currentUser.photo_url}</p>
+                </div>
               </div>
             </div>
-            <div className="col-lg-8">
-              <h1 className="mt-5" >Outstanding job applications:</h1>
+
+            <div className="col-lg-7 px-5">
+              <h1 className="mt-5" >Job Applications</h1>
               <div className="mt-5">
                 <Applications userJobs={userJobs} />
               </div>
