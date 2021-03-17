@@ -1,6 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import UserContext from "./UserContext";
-import Applications from './Applications';
+import JoblyApi from './JoblyApi';
+import JobCard from './JobCard';
 import ProfileForm from "./ProfileForm";
 import { PropagateLoader } from "react-spinners";
 import defaultPic from "./default-pic.png";
@@ -8,7 +9,19 @@ import './Profile.css';
 
 const Profile = () => {
   const { currentUser } = useContext(UserContext);
-  const userJobs = currentUser.jobs;
+
+  const [jobs, setJobs] = useState([]);
+  const [jobsLoaded, setJobsLoaded] = useState(false);
+
+  const searchJobs = async () => {
+    let jobsResponse = await JoblyApi.getJobs();
+    setJobs(jobsResponse.filter(j => j.state));
+    setJobsLoaded(true);
+  }
+
+  useEffect(() => {
+    searchJobs();
+  }, []);
 
   const [showForm, setShowForm] = useState(false);
 
@@ -16,7 +29,7 @@ const Profile = () => {
     setShowForm(!showForm);
   }
 
-  if (!currentUser) {
+  if (!currentUser || !jobsLoaded) {
     return (
       <div className="fade-loader-container d-flex align-items-center justify-content-center" style={{ height: '50vh' }}>
         <PropagateLoader size='15px' color="#123abc" />
@@ -66,7 +79,18 @@ const Profile = () => {
           <div className="col-lg-7 px-5">
             <h1 className="mt-5" >Job Applications</h1>
             <div className="mt-5">
-              <Applications userJobs={userJobs} />
+              {jobs.length ? (
+                <div className="JobList row row-cols-2">
+                  {jobs.map((jobData, idx) => (
+                    <JobCard
+                      job={jobData}
+                      key={jobData.id}
+                    />
+                  ))}
+                </div>
+              ) : (
+                  <p className="lead">No outstanding job applications</p>
+                )}
             </div>
           </div>
         </div>

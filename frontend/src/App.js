@@ -11,8 +11,8 @@ import { PropagateLoader } from "react-spinners";
 export const TOKEN_STORAGE_ID = "jobly-token";
 
 const App = () => {
-  const [infoLoaded, setInfoLoaded] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const [infoLoaded, setInfoLoaded] = useState(false);
 
   // initialize TOKEN_STORAGE_ID as localStorage key
   // setToken maintains a reference to key variable due to closure
