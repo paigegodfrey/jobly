@@ -23,7 +23,7 @@ const JobCard = ({ job = {}, handleApply }) => {
           <div>Salary: {formattedSalary}</div>
           <div>Equity: {formattedEquity}</div>
           <button
-            className="job-btn btn btn-outline-secondary font-weight-bold"
+            className="job-btn btn btn-secondary font-weight-bold"
             onClick={handleApply}
             disabled={job.state}
           >
