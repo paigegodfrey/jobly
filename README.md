@@ -4,7 +4,7 @@ Jobly is a full-stack mock job-search application in which users can login, view
 
 Utilizes: React, React Context, Node, Express, JSON Web Tokens, Bcrypt, Jest, SuperTest, PostgreSQL.
 
-Live demo: https://jobly-react-app.herokuapp.com/
+Live demo: http://jobly-build.surge.sh/
 
 Create a new account or login using the following information:
 
