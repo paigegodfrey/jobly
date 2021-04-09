@@ -66,7 +66,7 @@ const ProfileForm = ({ toggleFormButton }) => {
               <label>First Name</label>
               <input
                 name="first_name"
-                className="form-control"
+                className="form-control form-control-sm"
                 value={userForm.first_name}
                 onChange={handleChange}
               />
@@ -75,7 +75,7 @@ const ProfileForm = ({ toggleFormButton }) => {
               <label>Last Name</label>
               <input
                 name="last_name"
-                className="form-control"
+                className="form-control form-control-sm"
                 value={userForm.last_name}
                 onChange={handleChange}
               />
@@ -84,7 +84,7 @@ const ProfileForm = ({ toggleFormButton }) => {
               <label>Email</label>
               <input
                 name="email"
-                className="form-control"
+                className="form-control form-control-sm"
                 value={userForm.email}
                 onChange={handleChange}
               />
@@ -93,7 +93,7 @@ const ProfileForm = ({ toggleFormButton }) => {
               <label>Photo URL</label>
               <input
                 name="photo_url"
-                className="form-control"
+                className="form-control form-control-sm"
                 value={userForm.photo_url}
                 onChange={handleChange}
               />
@@ -103,7 +103,7 @@ const ProfileForm = ({ toggleFormButton }) => {
               <input required
                 type="password"
                 name="password"
-                className="form-control"
+                className="form-control form-control-sm"
                 value={userForm.password}
                 onChange={handleChange}
               />
