@@ -80,7 +80,7 @@ const Profile = () => {
             <h1 className="mt-5" >Job Applications</h1>
             <div className="mt-5">
               {jobApps.length ? (
-                <div className="JobList row row-cols-2">
+                <div className="JobList row row-cols-1 row-cols-md-2">
                   {jobApps.map((jobData, idx) => (
                     <JobCard
                       job={jobData}
