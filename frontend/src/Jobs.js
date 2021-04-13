@@ -42,7 +42,7 @@ const Jobs = () => {
           <p className="lead">Apply to any position with a single click.</p>
       <SearchBar searchFor={searchJobs} />
       {jobs.length ? (
-        <div className="JobList row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3">
+        <div className="JobList row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
           {jobs.map((jobData, idx) => (
             <JobCard
               job={jobData}
