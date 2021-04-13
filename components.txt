@@ -16,5 +16,7 @@ App
   │ └── SearchBar
   ├── PrivateRoute
   └─┬ Profile
-    └── Alert
+    ├── ProfileForm
+    │   └── Alert		
+    └── JobCard
 
