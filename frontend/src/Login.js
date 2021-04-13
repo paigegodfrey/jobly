@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import Alert from "./Alert";
+import { Spinner } from "react-bootstrap";
 
 const Login = ({ login }) => {
   const history = useHistory();
@@ -12,11 +13,14 @@ const Login = ({ login }) => {
     });
 
   const [loginErrors, setLoginErrors] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async evt => {
     evt.preventDefault();
+    setLoading(true);
     let result = await login(loginData);
     if (result.success) {
+      setLoading(false);
       history.push("/companies");
     } else {
       setLoginErrors(result.errors);
@@ -67,7 +71,9 @@ const Login = ({ login }) => {
                 className="btn btn-primary float-right"
                 onSubmit={handleSubmit}
               >
-                Submit
+                {loading
+                  ? <Spinner animation="border" as="span" size="sm" role="status" />
+                  : "Submit"}
               </button>
             </form>
           </div>
