@@ -20,11 +20,11 @@ const Login = ({ login }) => {
     setLoading(true);
     let result = await login(loginData);
     if (result.success) {
-      setLoading(false);
       history.push("/companies");
     } else {
       setLoginErrors(result.errors);
     }
+    setLoading(false);
   }
 
   const handleChange = evt => {

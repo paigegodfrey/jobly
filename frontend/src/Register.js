@@ -23,11 +23,11 @@ const Register = ({ register }) => {
     setLoading(true);
     let result = await register(registerData);
     if (result.success) {
-      setLoading(false);
       history.push("/companies");
     } else {
       setFormErrors(result.errors);
     }
+    setLoading(false);
   }
 
   const handleChange = evt => {
