@@ -4,6 +4,7 @@
 }
 
 .nav-brand {
+  color: rgba(0, 0, 0, 0.7);
   font-size: 30px;
   font-weight: 600;
 }

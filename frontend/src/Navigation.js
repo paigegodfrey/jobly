@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import './Navigation.css';
@@ -10,7 +10,7 @@ const Navigation = ({ logout }) => {
 
   const loggedInNav = (
     <Navbar expand="md" className="Navigation">
-      <Navbar.Brand href="/" className="nav-brand">Jobly</Navbar.Brand>
+      <Link className="nav-brand" to="/" id="nav-brand">Jobly</Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
         <Nav>
@@ -33,7 +33,7 @@ const Navigation = ({ logout }) => {
 
   const loggedOutNav = (
     <Navbar expand="md" className="Navigation">
-      <Navbar.Brand href="/" className="nav-brand">Jobly</Navbar.Brand>
+      <Link className="nav-brand" to="/" id="nav-brand">Jobly</Link>
       <Nav className="ml-auto">
         <Nav.Item className="mr-3">
           <NavLink exact to="/login">Login</NavLink>
