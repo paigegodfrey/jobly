@@ -45,5 +45,3 @@ jest companies.test.js
 jest jobs.test.js
 jest users.test.js
 ```
-
-This was a pair programming project, with collaborator: https://github.com/sairina
